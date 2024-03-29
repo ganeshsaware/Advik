@@ -19,7 +19,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 
         ErrorDetails errorDetails = new ErrorDetails(new Date(), exception.getMessage(), webRequest.getDescription(false));
-        System.out.println(errorDetails.getTimestamp() + errorDetails.getDetails() +errorDetails.getMassage());
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
 
