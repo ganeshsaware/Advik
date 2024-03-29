@@ -23,7 +23,6 @@ public class BookingController {
     @GetMapping("/getbooks")
     public ResponseEntity<List<BookingDto>> readBooking (){
         List<BookingDto> allBookings = bookingService.getAllBookings();
-    //    if (allBookings.is
         return new ResponseEntity<>(allBookings, HttpStatus.OK);
     }
 
