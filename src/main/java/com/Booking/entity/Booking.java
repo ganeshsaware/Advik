@@ -20,7 +20,7 @@ public class Booking {
     private Long id;
     private String name;
     private  String surname;
-    private long mob_no;
+    private Long mob_no;
     private String email;
     private String city;
 }

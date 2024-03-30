@@ -44,5 +44,11 @@ public class BookingController {
         return new ResponseEntity<>(bookingDto, HttpStatus.OK);
     }
 
+    @PatchMapping("/patchBooking/{id}")
+    public ResponseEntity<BookingDto> patchBooking (@PathVariable("id") long id, @RequestBody BookingDto booking){
+        BookingDto bookingDto = bookingService.patchBooking(id, booking);
+        return new ResponseEntity<>(bookingDto, HttpStatus.OK);
+    }
+
 
 }
