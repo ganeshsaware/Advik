@@ -44,10 +44,37 @@ public class BookingService {
 
     public BookingDto updateBooking(long id, BookingDto booking) {
         Booking booking1 = bookingRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
-
+        booking1.setName(booking.getName());
+        booking1.setSurname(booking.getSurname());
+        booking1.setMob_no(booking.getMob_no());
+        booking1.setEmail(booking.getEmail());
+        booking1.setCity(booking.getCity());
         Booking save = bookingRepo.save(booking1);
         BookingDto map = mapper.map(save, BookingDto.class);
         return map;
     }
 
+    public BookingDto patchBooking(long id, BookingDto booking) {
+
+        Booking booking1 = bookingRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Id not found " + id));
+       if (booking.getName() != null && !booking1.getName().equals(booking.getName())) {
+           booking1.setName(booking.getName());
+       }
+       if (booking.getSurname() != null && !booking1.getSurname().equals(booking.getSurname())) {
+           booking1.setSurname(booking.getSurname());
+       }
+       if (booking.getEmail() != null && !booking1.getEmail().equals(booking.getEmail())) {
+           booking1.setMob_no(booking.getMob_no());
+       }
+       if (booking.getMob_no() != 0 && booking1.getMob_no() != (booking.getMob_no())){
+           booking1.setMob_no(booking.getMob_no());
+       }
+       if (booking.getCity() != null && !booking1.getCity().equals(booking.getCity())){
+           booking1.setCity(booking.getCity());
+       }
+
+        Booking save = bookingRepo.save(booking1);
+        BookingDto map = mapper.map(save, BookingDto.class);
+        return map;
+    }
 }
